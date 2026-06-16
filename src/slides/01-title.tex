@@ -1,77 +1,72 @@
 % ============================================
 % TITLE SLIDE
 % ============================================
-% Use theme defaults (no hard-coded colors)
-
-% Default Beamer title page (theme defaults)
-% \begin{frame}[plain]
-%     	\titlepage
-% \end{frame}
 
 \begin{frame}[plain]
-    % 1. HEADER: LOGO AND INSTITUTION
-    \vspace{-0.5em}
+    \vspace{0.8cm}
+
+    % Title - large, bold, centered, uppercase
     \begin{center}
-        \begin{minipage}{0.12\textwidth}
-            \IfFileExists{src/images/logo.png}{%
-                \includegraphics[width=\linewidth]{src/images/logo.png}%
-            }{%
-                \begin{tikzpicture}
-                    \node[circle, draw, line width=1pt, text width=1.2cm, align=center, font=\tiny\scshape] {Logo Here};
-                \end{tikzpicture}%
-            }
-        \end{minipage}%
-        \hfill
-        \begin{minipage}{0.82\textwidth}
-            \raggedright
-            {\large \bfseries \InstitutionName}\par
-            {\small \DepartmentName}
-        \end{minipage}
-        \par\noindent\rule{\textwidth}{0.4pt}
+        {\Large \bfseries \MakeUppercase{\ProjectTitle} \par}
     \end{center}
 
+    \vspace{1em}
 
-    % 2. TITLE SECTION
-    \begin{center}
-        {\Large \bfseries \ProjectTitle \par}
-        \vspace{0.5em}
-        {\large \ProjectSubtitle \par}
-    \end{center}
-
-
-    % 3. PRESENTERS AND SUPERVISOR
+    % Team Members (left) and Supervisor (right)
     \begin{columns}[t, onlytextwidth]
         \begin{column}{0.55\textwidth}
-            \small
-            \textbf{Project Team}\par
-            \vspace{0.5em}
-            \begin{tabular}{@{}ll@{}}
-                \studentone   & {\footnotesize (\rollone)}   \\
-                \studenttwo   & {\footnotesize (\rolltwo)}   \\
-                \studentthree & {\footnotesize (\rollthree)} \\
-                \studentfour  & {\footnotesize (\rollfour)}  \\
-            \end{tabular}
+            \hspace{1em}{\normalsize \bfseries Team Members:}\par
+            \vspace{0.3em}
+            \hspace{1em}{\small \studentone{} (\rollone)}\\[2pt]
+            \hspace{1em}{\small \studenttwo{} (\rolltwo)}\\[2pt]
+            \hspace{1em}{\small \studentthree{} (\rollthree)}\\[2pt]
+            \hspace{1em}{\small \studentfour{} (\rollfour)}
         \end{column}
 
         \begin{column}{0.4\textwidth}
             \raggedleft
-            \small
-            \textbf{Supervised By}\par
-            \vspace{0.5em}
-            \SupervisorName\par
-            {\footnotesize \SupervisorTitle}\par
-            \vspace{0.5em}
-            \textbf{Date}            {\footnotesize \PresentationDate}
+            {\normalsize \bfseries Supervised By:}\par
+            \vspace{0.3em}
+            {\small \SupervisorName}\par
+        \end{column}
+    \end{columns}
+
+    \vfill
+
+    % Department and institution centered at bottom
+    \begin{center}
+        {\normalsize \DepartmentName}\par
+        {\normalsize \InstitutionName}\par
+        \vspace{0.3em}
+        {\normalsize \PresentationDate}
+    \end{center}
+
+    \vspace{0.5cm}
+\end{frame}
+
+% ============================================
+% PRESENTATION OUTLINE
+% ============================================
+\begin{frame}{Presentation Outline}
+    \begin{columns}[t, onlytextwidth]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Motivation
+                \item Introduction
+                \item Objectives
+                \item Project Applications
+                \item Scope Of Project
+                \item Methodology
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Result
+                \item Analysis
+                \item Future Enhancements
+                \item Conclusion
+                \item References
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
-
-% ============================================
-% PRESENTATION OUTLINES
-% ============================================
-\begin{frame}{Presentation Outlines}
-    \tableofcontents[hideallsubsections]
-\end{frame}
-
-% Start grouping for the outline
-\section{Introduction}

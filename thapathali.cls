@@ -4,13 +4,15 @@
 % Base class
 \LoadClass[aspectratio=169]{beamer}
 
-% Theme Setup - Inspired by Cambridge US and Beaver
-\usetheme{CambridgeUS}
-%\usecolortheme{beaver}
+% Completely plain theme
+\usetheme{default}
+\usecolortheme{default}
 
 % Required Packages
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{helvet}  % Helvetica (sans-serif) font
+\renewcommand{\familydefault}{\sfdefault}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -19,18 +21,51 @@
 \RequirePackage{listings}
 \RequirePackage{hyperref}
 
-% Color customization (optional)
-% Keep these defined so \textcolor{IOERed}{...} still works if you use it,
-% but do not override Beamer theme colors by default.
+% Legacy color names (kept for backward compatibility)
 \definecolor{IOERed}{RGB}{165,30,55}
 \definecolor{IOEBlue}{RGB}{0,51,102}
-%\setbeamercolor{structure}{fg=IOERed}
-%\setbeamercolor{palette primary}{bg=IOERed,fg=white}
-%\setbeamercolor{palette secondary}{bg=IOEBlue,fg=white}
-%\setbeamercolor{palette tertiary}{bg=IOERed!80,fg=white}
+
+% Pure black-on-white for everything
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{block title}{fg=black,bg=black!8}
+\setbeamercolor{block body}{bg=black!3}
+\setbeamercolor{item}{fg=black}
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{enumerate item}{fg=black}
+
+% Large bold font for frame titles, centered
+\setbeamerfont{frametitle}{series=\bfseries,size=\LARGE}
+\setbeamertemplate{frametitle}{
+    \vspace{0.5cm}
+    \begin{center}
+        \insertframetitle
+    \end{center}
+}
+
+% Filled circle bullets (matching the reference)
+\setbeamertemplate{itemize item}{\large\textbullet}
+\setbeamertemplate{itemize subitem}{\textbullet}
+
+% No header
+\setbeamertemplate{headline}{}
+
+% Remove all frame decorations (lines at top/bottom of frames)
+\setbeamertemplate{frame begin}{}
+\setbeamertemplate{frame end}{}
+\setbeamercolor{upper separation line head}{bg=white}
+\setbeamercolor{lower separation line head}{bg=white}
+\setbeamercolor{upper separation line foot}{bg=white}
+\setbeamercolor{lower separation line foot}{bg=white}
+
+% Remove TOC section circles/balls
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection\par}
 
 % ============================================
-% CUSTOMIZABLE VARIABLES - Edit these in your main document
+% CUSTOMIZABLE VARIABLES
 % ============================================
 \newcommand{\projecttitle}[1]{\def\@projecttitle{#1}}
 \newcommand{\projectsubtitle}[1]{\def\@projectsubtitle{#1}}
@@ -51,12 +86,12 @@
 \supervisorname{Dr. Supervisor Name}
 \supervisortitle{Associate Professor}
 \departmentname{Department of Electronics and Computer Engineering}
-\institutionname{Thapathali Campus\\Institute of Engineering\\Tribhuvan University}
+\institutionname{Institute of Engineering, Thapathali Campus}
 \presentationdate{\today}
 \academicyear{Academic Year: 2024/2025}
 
 % ============================================
-% Public getters (safe to use in .tex files)
+% Public getters
 % ============================================
 \newcommand{\ProjectTitle}{\@projecttitle}
 \newcommand{\ProjectSubtitle}{\@projectsubtitle}
@@ -69,15 +104,15 @@
 \newcommand{\PresentationDate}{\@presentationdate}
 \newcommand{\AcademicYear}{\@academicyear}
 
-% Footer: show only date of presentation and page number
+% Footer: light gray date on left, page number on right (matching reference)
 \setbeamertemplate{footline}{
     \leavevmode%
     \hbox{%
-        \begin{beamercolorbox}[wd=.78\paperwidth,ht=2.25ex,dp=1ex,left]{date in head/foot}%
-            \hspace*{1ex}\usebeamerfont{date in head/foot}Date of Presentation: \insertshortdate
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}%
+            \hspace*{1em}{\color{black!40}\footnotesize \PresentationDate}%
         \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=.22\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-            \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,right]{date in head/foot}%
+            {\color{black!40}\footnotesize \insertframenumber}\hspace*{1em}%
         \end{beamercolorbox}%
     }%
     \vskip0pt%
@@ -87,5 +122,3 @@
 \setbeamertemplate{navigation symbols}{}
 
 \endinput
-
-% Template Designed by : Krishna Acharya Version 1o
